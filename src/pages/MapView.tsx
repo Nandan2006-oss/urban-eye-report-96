@@ -5,7 +5,7 @@ import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
 // Mapbox token already configured
-mapboxgl.accessToken = "pk.eyJ1IjoidXJiYW5leWUiLCJhIjoiY20zYnB5enl3MGNsZTJrc2k1dDVpdmJpZyJ9.K9d8YpQpGRLCZNmsCWaKrA";
+mapboxgl.accessToken = "pk.eyJ1IjoibmFuZGFuLTIwMDYiLCJhIjoiY21obmh2d2doMDBrdTJrc2Fqa3BzdW9sZyJ9.SJeymzfS4AiQAZ7XR6_cyQ";
 
 // Global map state to persist across navigation
 let globalMap: mapboxgl.Map | null = null;
