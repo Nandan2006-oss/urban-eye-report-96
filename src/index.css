@@ -8,23 +8,23 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 210 24% 16%;
+    --background: 215 28% 12%;
+    --foreground: 0 0% 88%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 210 24% 16%;
+    --card: 215 25% 16%;
+    --card-foreground: 0 0% 88%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 210 24% 16%;
+    --popover: 215 25% 16%;
+    --popover-foreground: 0 0% 88%;
 
     --primary: 186 100% 42%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 100% 26%;
+    --secondary: 210 100% 36%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 210 20% 96%;
-    --muted-foreground: 210 12% 46%;
+    --muted: 215 20% 22%;
+    --muted-foreground: 0 0% 65%;
 
     --accent: 24 95% 53%;
     --accent-foreground: 0 0% 100%;
@@ -32,19 +32,19 @@ All colors MUST be HSL.
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 210 20% 90%;
-    --input: 210 20% 90%;
+    --border: 215 20% 24%;
+    --input: 215 20% 24%;
     --ring: 186 100% 42%;
 
     --radius: 0.75rem;
     
     /* Urban Eye custom tokens */
     --civic-teal: 186 100% 42%;
-    --civic-blue: 210 100% 26%;
+    --civic-blue: 210 100% 36%;
     --civic-orange: 24 95% 53%;
     --gradient-hero: linear-gradient(135deg, hsl(186 100% 42%), hsl(210 100% 36%));
-    --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.08);
-    --shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.12);
+    --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.3);
+    --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.4);
 
     --sidebar-background: 0 0% 98%;
 
@@ -64,14 +64,14 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 210 24% 10%;
-    --foreground: 0 0% 98%;
+    --background: 215 32% 8%;
+    --foreground: 0 0% 92%;
 
-    --card: 210 24% 12%;
-    --card-foreground: 0 0% 98%;
+    --card: 215 28% 12%;
+    --card-foreground: 0 0% 92%;
 
-    --popover: 210 24% 12%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 215 28% 12%;
+    --popover-foreground: 0 0% 92%;
 
     --primary: 186 100% 42%;
     --primary-foreground: 0 0% 100%;
@@ -79,8 +79,8 @@ All colors MUST be HSL.
     --secondary: 210 100% 36%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 210 20% 20%;
-    --muted-foreground: 210 12% 60%;
+    --muted: 215 20% 18%;
+    --muted-foreground: 0 0% 68%;
 
     --accent: 24 95% 53%;
     --accent-foreground: 0 0% 100%;
@@ -88,12 +88,12 @@ All colors MUST be HSL.
     --destructive: 0 62.8% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 210 20% 20%;
-    --input: 210 20% 20%;
+    --border: 215 20% 22%;
+    --input: 215 20% 22%;
     --ring: 186 100% 42%;
     
-    --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.4);
-    --shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.5);
+    --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.5);
+    --shadow-hover: 0 8px 28px rgba(0, 0, 0, 0.6);
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
