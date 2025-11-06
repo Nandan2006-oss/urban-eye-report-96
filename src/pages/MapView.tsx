@@ -10,6 +10,7 @@ mapboxgl.accessToken = "pk.eyJ1IjoibmFuZGFuLTIwMDYiLCJhIjoiY21obmh2d2doMDBrdTJrc
 // Global map state to persist across navigation
 let globalMap: mapboxgl.Map | null = null;
 let globalMapContainer: HTMLElement | null = null;
+let globalMarkers: mapboxgl.Marker[] = [];
 
 const MapView = () => {
   const [user, setUser] = useState<any>(null);
@@ -56,20 +57,20 @@ const MapView = () => {
   const initializeMap = () => {
     if (!mapContainer.current) return;
 
-    // If map already exists globally, just reattach it to the current container
+    // If map already exists globally, reattach it to the current container
     if (globalMap && globalMapContainer) {
-      // Move the map canvas to the new container
-      if (mapContainer.current !== globalMapContainer) {
-        const canvas = globalMapContainer.querySelector('.mapboxgl-canvas');
-        if (canvas && canvas.parentElement) {
-          mapContainer.current.appendChild(canvas.parentElement);
-        }
-        globalMapContainer = mapContainer.current;
+      // Transfer all children from the global container to the new ref
+      while (globalMapContainer.firstChild) {
+        mapContainer.current.appendChild(globalMapContainer.firstChild);
       }
+      globalMapContainer = mapContainer.current;
+      
+      // Resize map to fit new container
+      globalMap.resize();
       return;
     }
 
-    // Create new map instance
+    // Create new map instance (only happens once per session)
     globalMap = new mapboxgl.Map({
       container: mapContainer.current,
       style: "mapbox://styles/mapbox/dark-v11",
@@ -81,7 +82,7 @@ const MapView = () => {
 
     globalMap.addControl(new mapboxgl.NavigationControl(), "top-right");
 
-    // Add markers for each issue
+    // Add markers for each issue (only once)
     issues.forEach((issue) => {
       const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(`
         <div style="padding: 12px; background: #1e293b; color: #e0e0e0; border-radius: 8px;">
@@ -104,10 +105,12 @@ const MapView = () => {
       el.style.boxShadow = "0 2px 8px rgba(0, 188, 212, 0.4)";
       el.style.cursor = "pointer";
 
-      new mapboxgl.Marker(el)
+      const marker = new mapboxgl.Marker(el)
         .setLngLat([issue.longitude, issue.latitude])
         .setPopup(popup)
         .addTo(globalMap!);
+      
+      globalMarkers.push(marker);
     });
   };
 
