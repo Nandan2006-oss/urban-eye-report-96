@@ -21,6 +21,7 @@ export type Database = {
           description: string
           id: string
           image_url: string | null
+          issue_type: string | null
           latitude: number
           longitude: number
           title: string
@@ -32,6 +33,7 @@ export type Database = {
           description: string
           id?: string
           image_url?: string | null
+          issue_type?: string | null
           latitude: number
           longitude: number
           title: string
@@ -43,6 +45,7 @@ export type Database = {
           description?: string
           id?: string
           image_url?: string | null
+          issue_type?: string | null
           latitude?: number
           longitude?: number
           title?: string
@@ -117,7 +120,13 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      most_reported_issues: {
+        Row: {
+          issue_type: string | null
+          report_count: number | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       [_ in never]: never
