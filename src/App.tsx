@@ -9,6 +9,7 @@ import ReportIssue from "./pages/ReportIssue";
 import MapView from "./pages/MapView";
 import Leaderboard from "./pages/Leaderboard";
 import MyReports from "./pages/MyReports";
+import IssueLibrary from "./pages/IssueLibrary";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/map" element={<MapView />} />
           <Route path="/leaderboard" element={<Leaderboard />} />
           <Route path="/my-reports" element={<MyReports />} />
+          <Route path="/issue-library" element={<IssueLibrary />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

@@ -43,6 +43,9 @@ const Navbar = ({ user }: NavbarProps) => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-6">
+            <Link to="/issue-library" className="text-foreground hover:text-primary transition-colors">
+              Issue Library
+            </Link>
             <Link to="/report" className="text-foreground hover:text-primary transition-colors">
               Report Issue
             </Link>
@@ -80,6 +83,13 @@ const Navbar = ({ user }: NavbarProps) => {
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
           <div className="md:hidden mt-4 flex flex-col gap-4 pb-4">
+            <Link
+              to="/issue-library"
+              className="text-foreground hover:text-primary transition-colors"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Issue Library
+            </Link>
             <Link
               to="/report"
               className="text-foreground hover:text-primary transition-colors"

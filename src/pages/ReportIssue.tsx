@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
@@ -19,10 +19,20 @@ const ReportIssue = () => {
   const [image, setImage] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string>("");
   const [loading, setLoading] = useState(false);
+  const [issueTypeId, setIssueTypeId] = useState<string>("");
   const navigate = useNavigate();
+  const location = useLocation();
   const { toast } = useToast();
 
   useEffect(() => {
+    // Handle prefilled data from issue library
+    if (location.state) {
+      const { prefillTitle, prefillDescription, issueTypeId: typeId } = location.state as any;
+      if (prefillTitle) setTitle(prefillTitle);
+      if (prefillDescription) setDescription(prefillDescription);
+      if (typeId) setIssueTypeId(typeId);
+    }
+
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (!session) {
         navigate("/auth");
@@ -40,7 +50,7 @@ const ReportIssue = () => {
     });
 
     return () => subscription.unsubscribe();
-  }, [navigate]);
+  }, [navigate, location.state]);
 
   const getCurrentLocation = () => {
     if (navigator.geolocation) {
@@ -112,6 +122,7 @@ const ReportIssue = () => {
           longitude: parseFloat(longitude),
           image_url: imageUrl,
           created_by: user.id,
+          issue_type: issueTypeId || null,
         });
 
       if (insertError) throw insertError;

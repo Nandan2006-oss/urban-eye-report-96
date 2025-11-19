@@ -3,8 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import Navbar from "@/components/Navbar";
 import IssueCard from "@/components/IssueCard";
+import MostReportedIssues from "@/components/MostReportedIssues";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, MapPin, Users, TrendingUp } from "lucide-react";
+import { ArrowRight, MapPin, Users, TrendingUp, Library } from "lucide-react";
 
 const Home = () => {
   const [user, setUser] = useState<any>(null);
@@ -95,6 +96,10 @@ const Home = () => {
                 Report an Issue
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
+              <Button size="lg" variant="outline" onClick={() => navigate("/issue-library")}>
+                <Library className="mr-2 h-5 w-5" />
+                Browse Common Issues
+              </Button>
               <Button size="lg" variant="outline" onClick={() => navigate("/map")}>
                 View Map
               </Button>
@@ -138,15 +143,28 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Most Reported Issues */}
+      <MostReportedIssues />
+
       {/* Top Issues */}
       {topIssues.length > 0 && (
-        <section className="py-16">
+        <section className="py-16 bg-muted/50">
           <div className="container mx-auto px-4">
             <div className="flex items-center justify-between mb-8">
               <h2 className="text-3xl font-bold">Top Reported Issues</h2>
               <Button variant="ghost" onClick={() => navigate("/leaderboard")}>
                 View All
                 <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </div>
+            <div className="max-w-4xl mx-auto mb-6 text-center">
+              <Button 
+                variant="outline" 
+                size="lg"
+                onClick={() => navigate("/issue-library")}
+              >
+                <Library className="mr-2 h-5 w-5" />
+                Quick Report from Library
               </Button>
             </div>
             <div className="grid md:grid-cols-3 gap-6">
